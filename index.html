@@ -4,15 +4,16 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>reveal.js - HTML5 Presentations</title>
+		<title>CW JS Meetup - Functions by Matt Gray</title>
 
-		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="A Clockwork JavaScript meetup on functions: what are they, what makes a good function, and what does it all mean for JavaScript.">
+
+		<meta name="author" content="Matt Gray">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Average|Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 		
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
@@ -31,216 +32,274 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3 class="inverted">CSS 3D Presentations</h3>
+					<h1>Functions</h1>
+					<h3 class="inverted">The Building Blocks of Code</h3>
+					<h4>Matt Gray</h4>
 					<script>
 						// Delicously hacky. Look away.
 						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
 					</script>
 				</section>
-				
+
 				<section>
-					<h2>Heads Up</h2>
+					<h2>What is a function?</h2>
 					<p>
-						reveal.js is an easy to use, HTML based, presentation tool. You'll need a modern browser with 
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-					<p>
-						<i><small>- <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small></i>
+						Functions break down problems into manageable parts.
 					</p>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you run the speaker notes server.
-					</aside>
-				</section>
-				
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,<br/>
-							try pressing <a href="#/2/1">down</a>.
-						</p>
-						<a href="#/2/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Holistic Overview</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview!
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like:
-					</p>
-					<ul>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=cube">Cube</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=page">Page</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=concave">Concave</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=linear">Linear</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This let's you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#/7/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#/7/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#/7/0" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+					<blockquote>
+						Generally, the craft of programming is the factoring of a set of requirements into a set of functions and data structures.
 					</blockquote>
 				</section>
 				
 				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-    
-    var nodes = document.querySelectorAll( selector );
 
-    for( var i = 0, len = nodes.length; i < len; i++ ) {
-      var node = nodes[i];
+					<section>
+						<h3>Functions reduce complexity.</h3>
+						<p>Complexity is the programmer's <span style="color: #900">enemy</span>. Functions help hide complexity by creating an abstraction around an operation and giving it a name. </p>
+					</section>
 
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
+					<section>
+						<h3>Coloring errors red</h3>
+						<p>For example, suppose you want to color page elements <span style="color: #900">blood-red</span> on error, using jQuery:</p>
+						<pre><code class="javascript">
+$( 'input[name="first_name"]' ).css( { color: '#d00' } );
+
+$( '#message' ).css( { color: '#d00' } );
+
+// Show and make em bleed
+$( '#message ul li' ).show( ).css( { color: '#d00' } );
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Using a function</h3>
+						<p>Instead, use a self-documenting function:</p>
+
+						<pre><code class="javascript">
+function color_for_error ( elements ) {
+	return $( elements ).css( { color: '#d00' } );
 }
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-				
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,<br/>
-						<a href="#/2/3">like this</a>.
-					</p>
+</code></pre>
+						<p>We no longer need to think about what's under the hood.</p>
+
+						<pre><code class="javascript">
+color_for_error( 'input[name="first_name"]' );
+
+color_for_error( '#message' );
+
+color_for_error( '#message ul li' ).show( );
+						</code></pre>
+
+						<p>If you can remember the function name, you are done.</p>
+						<p>It is also easy to guess what the function does by its name.</p>
+					</section>
 				</section>
 
 				<section>
-					<h2>Fragmented Views</h2>
-					<p>Hit the next arrow...</p>
-					<p class="fragment">... to step through ...</p>
-					<ol>
-						<li class="fragment"><code>any type</code></li>
-						<li class="fragment"><em>of view</em></li>
-						<li class="fragment"><strong>fragments</strong></li>
-					</ol>
+					<section>
+						<h3>Functions reduce duplicate code.</h3>
+						<p>Don't repeat yourself if you don't have to. If you find that you are writing the same code in many places, consider using a function instead.</p>
+					</section>
+					<section>
+						<h3>Back to our example</h3>
+						<p>Now the customer wants the color to fade in on error.</p>
+						<p>Without the function, you need to change many lines like:</p>
+						<pre><code class="javascript">
+$( '#message ul li' ).animate( { color: '#d00' }, 500 );
+						</code></pre>
+						<p>With the function, you can make the change in one place:</p>
+						<pre><code class="javascript">
+function color_for_error ( elements ) {
+	return $( elements ).animate( { color: '#d00', 500 } );
+}
+						</code></pre>
+						<p>Now all error coloration will animate.</p>
+					</section>
 				</section>
-				
+
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
-						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
-					</a>
-				</section>
-				
-				<section>
-					<h2>Stellar Links</h2>
+					<h3>Functions improve reliability and maintainability.</h3>
+					<p>Think about the previous example:</p>
+						<pre><code class="javascript">
+function color_for_error ( elements ) {
+	return $( elements ).animate( { color: '#d00', 500 } );
+}
+						</code></pre>
 					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+						<li>It would be easy to change the color or animation</li>
+						<li>Using the function enforces consistency</li>
+						<li>Reading the code gives clues about the what and why</li>
 					</ul>
 				</section>
-				
+
 				<section>
-					<h1>THE END</h1>
-					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
+					<h3>Parts of a function</h3>
+					<pre><code class="javascript">
+function add ( argument1, argument2 ) {
+	var sum  =  argument1 + argument2;
+	return sum;
+}
+					</code></pre>
+					<ol>
+						<li><code>function</code><br/>The reserved word that begins a <strong>function definition</strong></li>
+						<li><code>add</code><br/>Optional <strong>function name</strong></li>
+						<li><code>argument1</code> and <code>argument2</code><br/>Optional <strong>arguments</strong> (or <strong>parameters</strong>); the <em>input</em></li>
+						<li>The function <strong>body</strong> is between the curly braces</li>
+						<li><code>return</code><br/>Optional; ends the function, optionally with a <strong>return&nbsp;value</strong>, the <em>output</em></li>
+					</ol>
 				</section>
+
+				<section>
+					<h3>Functions are objects.</h3>
+					<p>You can create functions, assign them to variables, store them in arrays, and use them like any other value.</p>
+						<pre><code class="javascript">
+// This function has no name, but is referenced by add_one
+var add_one  =  function ( a, b ) {
+	return a + b;
+};
+
+// my_add_one and add_one now reference the same function
+var my_add_one  =  add_one;
+
+// An array of functions!
+var my_functions  =  [ add_one, my_add_one ];
+
+my_functions[0]( 1, 2 ); // === 3
+						</code></pre>
+				</section>
+
+				<section>
+					<section>
+						<h3>Invoking a function</h3>
+						<p>There are four ways to invoke a function:</p>
+						<ol>
+							<li>Function</li>
+						</ol>
+						<pre><code class="javascript">
+var add_one  =  function ( a, b ) {
+	return a + b;
+};
+
+add_one( 1, 2 ); // === 3
+						</code></pre>
+						<ol start="2">
+							<li>Method</li>
+						</ol>
+						<pre><code class="javascript">
+var my_object  =  {
+	adder  :  add_one
+};
+
+my_object.adder( 1, 2 ); // === 3
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Invoking a function</h3>
+						<ol start="3">
+							<li>Constructor<br/>
+								Functions can be used to create new objects when invoked with the reserved word, <code>new</code></li>
+						</ol>
+						<pre><code class="javascript">
+var Person  =  function ( catchphrase ) {
+	this.catchphrase  =  catchphrase;
+};
+
+Person.prototype.talk  =  function ( ) {
+	alert( this.catchphrase );
+}
+
+// This is constructor invocation; new is *very* important
+var matt  =  new Person( 'Kittens!' );
+
+// And this is method invocation
+matt.talk( );
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Invoking a function</h3>
+						<h4>Why is <code>new</code> important?</h4>
+						<p>Without <code>new</code>, <code>Person</code> is just a function that belongs to the global object, <code>window</code>:</p>
+						<pre><code class="javascript">
+// Don't do this!
+var eryn  =  Person( 'Otters!' );
+// → undefined
+
+// eryn is now undefined (Person doesn't return anything)
+
+// Even worse, window.catchprase is now 'Otters!':
+
+alert( window.catchphrase );
+// → 'Otters!'
+						</code></pre>
+						<ul>
+							<li><strong>Capitalize the names of constructor functions.</strong></li>
+							<li>Invoke capitalized function names using <code>new</code>.</li>
+						</ul>
+
+					</section>
+
+					<section>
+						<h3>Invoking a function</h3>
+						<ol start="4">
+							<li>Apply<br/>
+								Any function can be invoked as if it were invoked as a <strong>method</strong> on an <strong>object</strong> using <code>apply</code>:</li>
+						</ol>
+						<pre><code class="javascript">
+var matt   =  new Person( 'Kittens!' );
+var kevin  =  new Person( 'Puppies!' );
+
+var deny_catchphrase  =  function ( ) {
+	alert( 'I never say "' + this.catchphrase + '"' );
+}
+
+deny_catchphrase.apply( matt );
+// → I never say "Kittens!"
+
+deny_catchphrase.apply( kevin );
+// → I never say "Puppies!"
+
+matt.deny_catchphrase( );
+// → Fails, no deny_catchphrase property on matt
+
+deny_catchphrase( );
+// → Fails, there is no this.catchphrase property on window
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Invoking a function</h3>
+						<h4>Remember jQuery and <code>.each( )</code>?</h4>
+						<p>jQuery uses <code>apply</code> under the hood to make this possible:</p>
+						<pre><code class="javascript">
+// All paragraphs should include unicorns anyway
+$( 'p' ).each( function ( ) {
+	$( this ).html( 'Unicorns!' );
+} );
+						</code></pre>
+						<pre><code class="javascript">
+// Abbreviated from jQuery's source, core.js:
+jQuery.each  =  function( obj, callback, args ) {
+	var name,
+		i = 0,
+		length = obj.length;
+
+	for ( ; i &lt; length; ) {
+		if ( callback.apply( obj[ i++ ], args ) === false ) {
+			break;
+		}
+	}
+
+	return obj;
+}
+						</code></pre>
+					</section>
+				</section>
+
+
+				
 			</div>
 
 			<!-- The navigational controls UI -->
@@ -309,6 +368,7 @@ function linkify( selector ) {
 			// Load third party scripts
 			head.js( 'lib/js/classList.js' );
 			head.js( 'lib/js/highlight.js', function() {
+				hljs.tabReplace  =  '    ';
 				// Fire off syntax highlighting for potential code samples in the slides
 				hljs.initHighlightingOnLoad();
 			} );
