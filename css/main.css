@@ -167,6 +167,10 @@ body {
 	margin-left: 40px;
 }
 
+.reveal li {
+	margin-bottom: 20px;
+}
+
 .reveal p {
 	margin-bottom: 10px;
 }
