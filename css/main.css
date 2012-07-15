@@ -63,16 +63,15 @@ body {
 	
 	color: #eee;
 	
-	font-family: 'League Gothic', sans-serif;
+	font-family: 'Lato', sans-serif;
 	line-height: 0.9em;
 	letter-spacing: 0.02em;
 	
-	text-transform: uppercase;
 	text-shadow: 0px 0px 6px rgba(0,0,0,0.2);
 }
 
-.reveal h1 { font-size: 136px; 	}
-.reveal h2 { font-size: 76px;	}
+.reveal h1 { font-size: 136px; text-transform: uppercase; }
+.reveal h2 { font-size: 76px; text-transform: uppercase; }
 .reveal h3 { font-size: 56px;	}
 .reveal h4 { font-size: 36px;	}
 
@@ -176,7 +175,7 @@ body {
 	display: block;
 	position: relative;
 	width: 70%;
-	margin: 5px auto;
+	margin: 20px auto;
 	padding: 5px;
 	
 	font-style: italic;
@@ -453,7 +452,7 @@ body {
 	margin-top: -320px;
 	padding: 20px 0px;
 	
-	text-align: center;
+	text-align: left;
 
 	-webkit-transition: -webkit-perspective .4s ease;
 	   -moz-transition: -moz-perspective .4s ease;
