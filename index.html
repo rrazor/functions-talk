@@ -75,12 +75,12 @@
 						<h4>Coloring errors red</h4>
 						<p>For example, suppose you want to color page elements <span style="color: #900">blood-red</span> on error, using jQuery:</p>
 						<pre><code class="javascript">
-$( 'input[name="first"]' ).css( { color: '#d00' } );
+$( 'input[name="first"]' ).css( { color: '#900' } );
 
-$( '#message' ).css( { color: '#d00' } );
+$( '#message' ).css( { color: '#900' } );
 
 // Show and make em bleed
-$( '#message ul li' ).show( ).css( { color: '#d00' } );
+$( '#message ul li' ).show( ).css( { color: '#900' } );
 						</code></pre>
 					</section>
 
@@ -90,7 +90,7 @@ $( '#message ul li' ).show( ).css( { color: '#d00' } );
 
 						<pre><code class="javascript">
 function color_for_error ( elements ) {
-	return $( elements ).css( { color: '#d00' } );
+	return $( elements ).css( { color: '#900' } );
 }
 </code></pre>
 						<p>We no longer need to think about what´s under the hood.</p>
@@ -118,12 +118,12 @@ color_for_error( '#message ul li' ).show( );
 						<p>Without the function, you need to change many lines like:</p>
 						<pre><code class="javascript">
 // requires jQuery UI
-$( '#message ul li' ).animate( { color: '#d00' }, 500 );
+$( '#message ul li' ).animate( { color: '#900' }, 500 );
 						</code></pre>
 						<p>With the function, you can make the change in one place:</p>
 						<pre><code class="javascript">
 function color_for_error ( elements ) {
-	return $( elements ).animate( { color: '#d00', 500 } );
+	return $( elements ).animate( { color: '#900', 500 } );
 }
 						</code></pre>
 						<p>Now all error coloration will animate. There is no duplicate code that describes the color used, the animation, and the duration.</p>
@@ -134,7 +134,7 @@ function color_for_error ( elements ) {
 						<p>Think about the previous example:</p>
 						<pre><code class="javascript">
 function color_for_error ( elements ) {
-	return $( elements ).animate( { color: '#d00', 500 } );
+	return $( elements ).animate( { color: '#900', 500 } );
 }
 						</code></pre>
 						<ul>
@@ -208,8 +208,8 @@ sum  =  function ( ) {
 	return sum;
 }
 
-sum_all( );             // →  0
-sum_all( 1, 2, 3, 4 );  // → 10
+sum( );             // →  0
+sum( 1, 2, 3, 4 );  // → 10
 						</code></pre>
 					</section>
 				</section>
