@@ -76,6 +76,8 @@ body {
 .reveal h4 { font-size: 36px; text-transform: uppercase; }
 .reveal h4 code { text-transform: none; }
 
+.reveal p code { color: #e3c3ab; }
+
 .reveal h1.inverted,
 .reveal h2.inverted,
 .reveal h3.inverted,
