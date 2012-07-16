@@ -43,9 +43,12 @@
 
 				<section>
 					<h2>What is a function?</h2>
-					<p>
-						Functions break down problems into manageable parts.
-					</p>
+					<ul>
+						<li>Functions break down problems into manageable parts.</li>
+						<li>They can process input data and return output.</li>
+						<li>Functions can also simply perform steps in a sequence.</li>
+						<li>Each function in JavaScript creates its own private scope.</li>
+					</ul>
 
 					<blockquote>
 						Generally, the craft of programming is the factoring of a set of requirements into a set of functions and data structures.
@@ -53,17 +56,26 @@
 				</section>
 				
 				<section>
-
+				
 					<section>
-						<h3>Functions reduce complexity.</h3>
-						<p>Complexity is the programmer's <span style="color: #900">enemy</span>. Functions help hide complexity by creating an abstraction around an operation and giving it a name. </p>
+						<h2>Why use functions?</h2>
+						<ul>
+							<li class="fragment">Functions reduce complexity.</li>
+							<li class="fragment">Functions eliminate duplicate code.</li>
+							<li class="fragment">Functions improve reliability and maintainability.</li>
+						</ul>
 					</section>
 
 					<section>
-						<h3>Coloring errors red</h3>
+						<h3>Functions reduce complexity.</h3>
+						<p>Complexity is the programmer´s <span style="color: #900">enemy</span>. Functions help hide complexity by creating an abstraction around an operation and giving it a name. </p>
+					</section>
+
+					<section>
+						<h4>Coloring errors red</h4>
 						<p>For example, suppose you want to color page elements <span style="color: #900">blood-red</span> on error, using jQuery:</p>
 						<pre><code class="javascript">
-$( 'input[name="first_name"]' ).css( { color: '#d00' } );
+$( 'input[name="first"]' ).css( { color: '#d00' } );
 
 $( '#message' ).css( { color: '#d00' } );
 
@@ -73,7 +85,7 @@ $( '#message ul li' ).show( ).css( { color: '#d00' } );
 					</section>
 
 					<section>
-						<h3>Using a function</h3>
+						<h4>Coloring errors red, pt 2</h4>
 						<p>Instead, use a self-documenting function:</p>
 
 						<pre><code class="javascript">
@@ -81,10 +93,10 @@ function color_for_error ( elements ) {
 	return $( elements ).css( { color: '#d00' } );
 }
 </code></pre>
-						<p>We no longer need to think about what's under the hood.</p>
+						<p>We no longer need to think about what´s under the hood.</p>
 
 						<pre><code class="javascript">
-color_for_error( 'input[name="first_name"]' );
+color_for_error( 'input[name="first"]' );
 
 color_for_error( '#message' );
 
@@ -94,15 +106,14 @@ color_for_error( '#message ul li' ).show( );
 						<p>If you can remember the function name, you are done.</p>
 						<p>It is also easy to guess what the function does by its name.</p>
 					</section>
-				</section>
 
-				<section>
 					<section>
-						<h3>Functions reduce duplicate code.</h3>
-						<p>Don't repeat yourself if you don't have to. If you find that you are writing the same code in many places, consider using a function instead.</p>
+						<h3>Functions eliminate duplicate code.</h3>
+						<p>Don´t repeat yourself if you don´t have to. If you find that you are writing the same code in many places, consider using a function instead.</p>
 					</section>
+
 					<section>
-						<h3>Back to our example</h3>
+						<h4>Coloring errors red, pt 3</h4>
 						<p>Now the customer wants the color to fade in on error.</p>
 						<p>Without the function, you need to change many lines like:</p>
 						<pre><code class="javascript">
@@ -115,139 +126,172 @@ function color_for_error ( elements ) {
 	return $( elements ).animate( { color: '#d00', 500 } );
 }
 						</code></pre>
-						<p>Now all error coloration will animate.</p>
+						<p>Now all error coloration will animate. There is no duplicate code that describes the color used, the animation, and the duration.</p>
 					</section>
-				</section>
 
-				<section>
-					<h3>Functions improve reliability and maintainability.</h3>
-					<p>Think about the previous example:</p>
+					<section>
+						<h3>Functions improve reliability and maintainability.</h3>
+						<p>Think about the previous example:</p>
 						<pre><code class="javascript">
 function color_for_error ( elements ) {
 	return $( elements ).animate( { color: '#d00', 500 } );
 }
 						</code></pre>
-					<ul>
-						<li>It would be easy to change the color or animation</li>
-						<li>Using the function enforces consistency</li>
-						<li>Reading the code gives clues about the what and why</li>
-					</ul>
+						<ul>
+							<li>It would be easy to change the color or animation</li>
+							<li>Using the function enforces consistency</li>
+							<li>Reading the code gives clues about the what and why</li>
+							<li>Adding additional logic can be done in one place</li>
+							<li>You could test for jQuery UI and degrade gracefully</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
-					<h3>Parts of a function</h3>
+					<h2>A function´s parts</h2>
 					<pre><code class="javascript">
-function add ( argument1, argument2 ) {
-	var sum  =  argument1 + argument2;
-	return sum;
+function sum ( argument1, argument2 ) {
+	var result  =  argument1 + argument2;
+	return result;
 }
 					</code></pre>
 					<ol>
-						<li><code>function</code><br/>The reserved word that begins a <strong>function definition</strong></li>
-						<li><code>add</code><br/>Optional <strong>function name</strong></li>
-						<li><code>argument1</code> and <code>argument2</code><br/>Optional <strong>arguments</strong> (or <strong>parameters</strong>); the <em>input</em></li>
+						<li><code>function</code>&mdash;reserved word; begins a <strong>function definition</strong></li>
+						<li><code>add</code>&mdash;optional <strong>function name</strong></li>
+						<li><code>argument1</code> &amp; <code>argument2</code>&mdash;optional <strong>arguments</strong>; <em>input</em></li>
 						<li>The function <strong>body</strong> is between the curly braces, <code>{ }</code></li>
-						<li><code>return</code><br/>Optional; ends execution, may include a <strong>return&nbsp;value</strong>, the <em>output</em></li>
+						<li><code>return</code>&mdash;optional; ends execution, can set a <strong>return&nbsp;value</strong>; <em>output</em></li>
 					</ol>
 				</section>
 
 				<section>
-					<h3>Functions are objects.</h3>
+					<h2>Functions are objects</h2>
 					<p>You can create functions, assign them to variables, store them in arrays, and use them like any other value.</p>
-						<pre><code class="javascript">
-// This function has no name, but is referenced by add_one
-var add_one  =  function ( a, b ) {
+					<pre><code class="javascript">
+// This function has no name, but is referenced by sum
+var sum  =  function ( a, b ) {
 	return a + b;
 };
 
-// my_add_one and add_one now reference the same function
-var my_add_one  =  add_one;
+// my_sum and sum now reference the same function
+var my_sum  =  sum;
 
 // An array of functions!
-var my_functions  =  [ add_one, my_add_one ];
+var my_functions  =  [ sum, my_sum ];
 
 my_functions[0]( 1, 2 ); // === 3
-						</code></pre>
+					</code></pre>
 				</section>
 
 				<section>
 					<section>
-						<h3>Invoking a function</h3>
-						<p>There are four ways to invoke a function:</p>
-						<ol>
+						<h2>Invocation</h2>
+						<p>There are four ways to invoke a function.</p>
+					</section>
+
+					<section>
+						<h3><ol>
 							<li>Function</li>
-						</ol>
+						</ol></h3>
 						<pre><code class="javascript">
-var add_one  =  function ( a, b ) {
+// I can call product before its definition
+product( 1, 3 ); // === 3
+
+// Function definitions are "hoisted" to the top
+function product ( a, b ) {
+	return a * b;
+}
+
+// I cannot call sum before its assignment, though
+sum( 1, 2 ); // fails, undefined function
+
+var sum  =  function ( a, b ) {
 	return a + b;
 };
 
-add_one( 1, 2 ); // === 3
+sum( 1, 2 ); // === 3
+
+// This is a self-executing function expression
+(function ( a, b ) {
+	return a - b;
+})( 4, 1 ); // === 3
 						</code></pre>
-						<ol start="2">
+					</section>
+					<section>
+					<h3><ol start="2">
 							<li>Method</li>
-						</ol>
+					</ol></h3>
 						<pre><code class="javascript">
 var my_object  =  {
-	adder  :  add_one
+	operation  :  sum
 };
 
-my_object.adder( 1, 2 ); // === 3
+my_object.operation( 1, 2 ); // === 3
+
+my_object.another_op  =  function ( a, b ) {
+	return a / b;
+};
+
+my_object.another_op;
+// → the Function object itself created above
+
+my_object.another_op( 10, 2 ); // === 5
+
+// You can use square bracket notation, too
+my_object['another_op']( 15, 5 ); // === 3
 						</code></pre>
 					</section>
 
 					<section>
-						<h3>Invoking a function</h3>
-						<ol start="3">
-							<li>Constructor<br/>
-								Functions can be used to create new objects when invoked with the reserved word, <code>new</code></li>
-						</ol>
+						<h3><ol start="3">
+								<li>Constructor</li>
+						</ol></h3>
+						<p>Functions can be used to create new objects when invoked with the reserved word, <strong><code>new</code></strong>:</p>
 						<pre><code class="javascript">
+// This is a constructor
 var Person  =  function ( catchphrase ) {
 	this.catchphrase  =  catchphrase;
 };
 
+// talk will be available on all Person objects
 Person.prototype.talk  =  function ( ) {
 	alert( this.catchphrase );
 }
 
-// This is constructor invocation; new is *very* important
+// Constructor invocation; new is *very* important
 var matt  =  new Person( 'Kittens!' );
 
 // And this is method invocation
-matt.talk( );
+matt.talk( ); // → 'Kittens!'
 						</code></pre>
 					</section>
 
 					<section>
-						<h3>Invoking a function</h3>
 						<h4>Why is <code>new</code> important?</h4>
 						<p>Without <code>new</code>, <code>Person</code> is just a function that belongs to the global object, <code>window</code>:</p>
 						<pre><code class="javascript">
-// Don't do this!
+// Don´t do this! You forgot new!
 var eryn  =  Person( 'Otters!' );
 // → undefined
 
-// eryn is now undefined (Person doesn't return anything)
-
+// eryn is now undefined (Person doesn´t return anything)
 // Even worse, window.catchprase is now 'Otters!':
 
 alert( window.catchphrase );
 // → 'Otters!'
 						</code></pre>
 						<ul>
-							<li><strong>Capitalize the names of constructor functions.</strong></li>
-							<li>Invoke capitalized function names using <code>new</code>.</li>
+							<li><strong>Capitalize the names of constructor functions</strong></li>
+							<li>Invoke capitalized function names using <code>new</code></li>
 						</ul>
 
 					</section>
 
 					<section>
-						<h3>Invoking a function</h3>
-						<ol start="4">
-							<li>Apply<br/>
-								Any function can be invoked as if it were invoked as a <strong>method</strong> on an <strong>object</strong> using <code>apply</code>:</li>
-						</ol>
+						<h3><ol start="4">
+							<li>Apply</li>
+						</ol></h3>
+						<p>Any function can be invoked as if it were a <strong>method</strong> on an <strong>object</strong> using <code>apply</code>:</p>
 						<pre><code class="javascript">
 var matt   =  new Person( 'Kittens!' );
 var kevin  =  new Person( 'Puppies!' );
@@ -271,17 +315,10 @@ deny_catchphrase( );
 					</section>
 
 					<section>
-						<h3>Invoking a function</h3>
-						<h4>Remember jQuery and <code>.each( )</code>?</h4>
-						<p>jQuery uses <code>apply</code> under the hood to make this possible:</p>
+						<h4>Remember <code>jQuery.each( )</code>?</h4>
+						<p>jQuery uses <code>apply</code> <a href="https://github.com/jquery/jquery/blob/master/src/core.js#L563" target="_new">under the hood</a> to make this possible:</p>
 						<pre><code class="javascript">
-// All paragraphs should include unicorns anyway
-$( 'p' ).each( function ( ) {
-	$( this ).html( 'Unicorns!' );
-} );
-						</code></pre>
-						<pre><code class="javascript">
-// Abbreviated from jQuery's source, core.js:
+// Abbreviated from jQuery´s source, core.js:
 jQuery.each  =  function( obj, callback, args ) {
 	var name,
 		i = 0,
@@ -295,8 +332,36 @@ jQuery.each  =  function( obj, callback, args ) {
 
 	return obj;
 }
+
+// All paragraphs should be about unicorns anyway
+$( 'p' ).each( function ( ) {
+	$( this ).html( 'Unicorns!' );
+} );
 						</code></pre>
 					</section>
+				</section>
+
+				<section>
+					<h2>The story so far</h2>
+					<ul>
+						<li><a href="#/1">What</a> is a function?</li>
+						<li><a href="#/2">Why</a> you should use functions:
+							<ul>
+								<li><a href="#/2/1">Reduce complexity</a></li>
+								<li><a href="#/2/4">Eliminate duplicate code</a></li>
+								<li><a href="#/2/6">Improve reliability and maintainability</a></li>
+							</ul>
+						</li>
+						<li><a href="#/3">Parts</a> of a function</li>
+						<li>Functions are <a href="#/4">objects</a></li>
+						<li><a href="#/5">Four ways</a> to invoke a function</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Questions?</h1>
+					<br/>
+					<h3>Coming up next: Scope</h3>
+					<p style="text-align: center;"><em>(Not the mouthwash)</em></p>
 				</section>
 
 
@@ -356,7 +421,7 @@ jQuery.each  =  function( obj, callback, args ) {
 					mouseWheel: true,
 
 					// Apply a 3D roll to links on hover
-					rollingLinks: true,
+					rollingLinks: false,
 
 					// UI style
 					theme: query.theme || 'default', // default/neon/beige
