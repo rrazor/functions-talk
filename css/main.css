@@ -76,7 +76,8 @@ body {
 .reveal h4 { font-size: 36px; text-transform: uppercase; }
 .reveal h4 code { text-transform: none; }
 
-.reveal p code { color: #e3c3ab; }
+.reveal p code,
+.reveal li code { color: #e3c3ab; }
 
 .reveal h1.inverted,
 .reveal h2.inverted,
@@ -181,11 +182,10 @@ body {
 .reveal blockquote {
 	display: block;
 	position: relative;
-	width: 70%;
+	width: 90%;
 	margin: 20px auto;
 	padding: 5px;
-	
-	font-style: italic;
+	font-family: 'Average', serif;
 	background: rgba(255, 255, 255, 0.05);
 	box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
 }
