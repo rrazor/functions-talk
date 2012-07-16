@@ -165,9 +165,10 @@ function sum ( argument1, argument2 ) {
 				</section>
 
 				<section>
-					<h2>Functions are objects</h2>
-					<p>You can create functions, assign them to variables, store them in arrays, and use them like any other value.</p>
-					<pre><code class="javascript">
+					<section>
+						<h2>Functions are objects</h2>
+						<p>You can create functions, assign them to variables, store them in arrays, and use them like any other value.</p>
+						<pre><code class="javascript">
 // This function has no name, but is referenced by sum
 var sum  =  function ( a, b ) {
 	return a + b;
@@ -180,7 +181,37 @@ var my_sum  =  sum;
 var my_functions  =  [ sum, my_sum ];
 
 my_functions[0]( 1, 2 ); // === 3
-					</code></pre>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Fun with function objects</h3>
+						<pre><code class="javascript">
+var sum  =  function ( a, b ) {
+	console.log( arguments ); // → array of arguments
+	return a + b;
+};
+
+console.log( sum.toString( ) ); // → Function´s source code!
+console.log( sum.length );      // → 2, # of arguments it defines
+
+// You can call a function with more or less arguments
+// than it specifies:
+sum( 2, 3, 4 ); // → 5, since 2 + 3; arguments is [ 2, 3, 4 ]
+
+// Last declaration wins
+sum  =  function ( ) {
+	// See how the local sum var shadows the global var
+	var i = 0, sum = 0;
+	for ( i = 0; i &lt; arguments.length; ++i ) {
+		sum  +=  arguments[i];
+	}
+	return sum;
+}
+
+sum_all( );             // →  0
+sum_all( 1, 2, 3, 4 );  // → 10
+						</code></pre>
+					</section>
 				</section>
 
 				<section>
@@ -255,7 +286,7 @@ var Person  =  function ( catchphrase ) {
 
 // talk will be available on all Person objects
 Person.prototype.talk  =  function ( ) {
-	alert( this.catchphrase );
+	console.log( this.catchphrase );
 }
 
 // Constructor invocation; new is *very* important
@@ -277,7 +308,7 @@ var eryn  =  Person( 'Otters!' );
 // eryn is now undefined (Person doesn´t return anything)
 // Even worse, window.catchprase is now 'Otters!':
 
-alert( window.catchphrase );
+console.log( window.catchphrase );
 // → 'Otters!'
 						</code></pre>
 						<ul>
@@ -297,7 +328,7 @@ var matt   =  new Person( 'Kittens!' );
 var kevin  =  new Person( 'Puppies!' );
 
 var deny_catchphrase  =  function ( ) {
-	alert( 'I never say "' + this.catchphrase + '"' );
+	console.log( 'I never say "' + this.catchphrase + '"' );
 }
 
 deny_catchphrase.apply( matt );
@@ -357,6 +388,7 @@ $( 'p' ).each( function ( ) {
 						<li><a href="#/5">Four ways</a> to invoke a function</li>
 					</ul>
 				</section>
+
 				<section>
 					<h1>Questions?</h1>
 					<br/>
@@ -364,7 +396,197 @@ $( 'p' ).each( function ( ) {
 					<p style="text-align: center;"><em>(Not the mouthwash)</em></p>
 				</section>
 
+				<section>
+					<section>
+						<h2>Functions and scope</h2>
+						<p><strong>Scope</strong> is one of the most powerful aspects of functions in JavaScript.</p>
+						<p><em>So what the heck is this &ldquo;scope&rdquo; anyway?</em></p>
+						<br/>
+						<p class="fragment">Scope determines what variables are accessible from a line of code and when it is safe to discard them.</p>
+					</section>
 
+					<section>
+						<h3>Global scope</h3>
+						<p>JavaScript has a <strong>global object</strong>, <code>window</code> in a browser, and <code>global</code> in NodeJS.</p>
+						<p><strong>Every line of code can read and write to the global object.</strong></p>
+						<br/>
+						<p class="fragment">Therefore, we can say that any property of the global object is always <em>in scope</em> for our functions.</p>
+						<br/>
+						<p class="fragment">This is both <strong>powerful</strong> and <strong style="color: #900">dangerous</strong>.</p>
+					</section>
+
+					<section>
+						<h4>Example</h4>
+						<p>Notice how the function can see <code>company</code> below:</p>
+						<pre><code class="javascript">
+// Variables declared outside any function belong
+// to the global object
+var company  =  'Clockwork';
+
+window.company; // → 'Clockwork'
+
+// Functions declared outside other functions belong
+// to the global object, too
+function get_best_place_to_work ( ) {
+	return company;
+}
+
+window.get_best_place_to_work; // → Function object
+
+console.log( get_best_place_to_work( ) ); // → 'Clockwork'
+						</code></pre>
+						<p>Function scope is like one-way glass: you can see out of a function, others cannot see in.</p>
+					</section>
+
+					<section>
+						<h3>Block scope</h3>
+						<p><strong>JavaScript doesn´t have it!</strong></p>
+						<pre><code class="javascript">
+if ( condition ) {
+	var tmp  =  5;
+}
+
+// tmp doesn´t go out of scope outside the if block
+console.log( tmp ); // → 5
+						</code></pre>
+						<pre><code class="javascript">
+var i = 0;
+for ( i = 0; i &lt; 10; ++i ) {
+	// Code here
+}
+console.log( i ); // → 10
+						</code></pre>
+						<pre><code class="javascript">
+for ( var i = 0; i &lt 10; ++i ) {
+	// Code here
+}
+console.log( i ); // → 10
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>A cautionary tale</h4>
+						<p>If you forget to declare a variable with <code>var</code>, it ends up in the <strong>global scope</strong>!</p>
+						<pre><code class="javascript">
+function format_location ( city, state ) {
+	// Don´t do this!! Missing var
+	location  =  city + ', ' + state;
+	return location;
+}
+
+console.log( format_location( 'Minneapolis', 'MN' ) );
+// → 'Minneapolis, MN'
+
+console.log( window.location );
+// → 'Minneapolis, MN'
+// OH NOES.  You broke the entire browser window.
+						</code></pre>
+						<p style="color: #090"><strong>Always, always use <code>var</code>!</strong></p>
+						<p>Thank goodness JavaScript <em>does</em> have...</p>
+					</section>
+
+					<section>
+						<h3>Function scope</h3>
+						<p>Only a function´s own code and other functions declared within have access to its scope and data:</p>
+						<pre><code class="javascript">
+function sum ( a, b ) {
+
+	var result  =  a + b;
+	console.log( 'unicorns = ' + n_unicorns ); // → 1
+
+	return result;
+}
+
+var n_narwhal   =  2,
+    n_unicorns  =  1;
+
+sum( n_narwhal, n_unicorns ); // → 3
+
+console.log( result );
+// → undefined, result is only in sum´s scope
+
+console.log( a );
+// → undefined, the argument a only exists in sum´s scope
+						</code></pre>
+					</section>
+				</section>
+				<section>
+
+					<section>
+						<h2>Closures</h2>
+						<p>You create a <em>closure</em> when defining a function in another:</p>
+
+						<pre><code class="javascript">
+function build_add_n ( n ) {
+
+	// I am a closure
+	var add_n  =  function ( a ) {
+		return a + n;
+	};
+
+	return add_n;
+}
+						</code></pre>
+						<p>The inner function can see everything <code>build_add_n</code> can, except the special variables <code>arguments</code> and <code>this</code>.</p>
+						<p>Most importantly, it can see <code>n</code>, so the returned function knows the proper amount to add to its input parameter.</p>
+						<p>And yes, you can write a function that returns a function!</p>
+					</section>
+					<section>
+						<h4>Example</h4>
+						<p>First, we call <code>build_add_n</code>, which returns a <code>Function</code>:</p>
+						<pre><code class="javascript">
+// Make a function that adds 4 to the input
+var add_4  =  build_add_n( 4 );
+console.log( add_4 ); // → Function
+
+// Now, we invoke it as a function
+add_4( 2 ); // → 6
+						</code></pre>
+						<p>The function was able to remember that we passed in <code>4</code> for the <code>n</code> parameter even after the original function call ended!</p>
+						<p>This was possible because the anonymous function within <code>build_add_n</code> had access to everything <em>in scope</em> when it was created. This access persists after <code>build_add_n</code> terminates.</p>
+					</section>
+
+					<section>
+						<h4>Surprises in <code>jQuery</code></h4>
+						<p>The scope-capturing behavior of closures can lead to unpleasant surprises.</p>
+						<pre><code class="javascript">
+function add_handlers ( result ) {
+	var i, len = result.size( );
+	for ( i = 0; i &lt; len; ++i ) {
+		$( result[i] ).on( 'click', function ( ) {
+			console.log( 'I am element number: ' + i );
+		} );
+	}
+}
+						</code></pre>
+						<p>Looks legit, right?</p>
+						<p class="fragment"><strong style="color: #900">Wrong.</strong> Let's look at an <a href="http://jsfiddle.net/X6Ynt/">example</a>.</p>
+					</section>
+					<section>
+						<h4>Surprises in <code>jQuery</code>, cont´d</h4>
+						<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/X6Ynt/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+						<p class="fragment">Can anyone explain <em>why</em> this is happening?</p>
+						<p class="fragment"><em>Hint: it´s not <code>jQuery</code>´s fault.</em></p>
+					</section>
+					<section>
+						<h4>Surprises in <code>jQuery</code>, thrilling conclusion</h4>
+
+						<pre><code class="javascript">
+function add_handlers ( result ) {
+    var i, len = result.size( );
+    for ( i = 0; i &lt; len; ++i ) {
+        $( result[i] ).on( 'click', function ( ) {
+            alert( 'I am element number: ' + i + 
+                ' and my HTML is: ' + $( this ).html( ) );
+        } );
+    }
+}
+						</code></pre>
+						<p class="fragment">There is only one <code>i</code> in the <code>add_handlers</code> scope. It changes value, but there is only one.</p>
+						<p class="fragment">All of the click handlers capture <code>i</code> in a closure.</p>
+						<p class="fragment">All return the current value of <code>i</code>, <code>3</code>, because they all reference the same, single <code>i</code> that was in scope.</p>
+					</section>
+				</section>
 				
 			</div>
 
