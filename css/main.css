@@ -73,7 +73,8 @@ body {
 .reveal h1 { font-size: 136px; text-transform: uppercase; }
 .reveal h2 { font-size: 76px; text-transform: uppercase; }
 .reveal h3 { font-size: 56px;	}
-.reveal h4 { font-size: 36px;	}
+.reveal h4 { font-size: 36px; text-transform: uppercase; }
+.reveal h4 code { text-transform: none; }
 
 .reveal h1.inverted,
 .reveal h2.inverted,
@@ -196,7 +197,7 @@ body {
 .reveal pre {
 	display: block;
 	position: relative;
-	width: 90%;
+	width: 95%;
 	margin: 10px auto;
 
 	text-align: left;
