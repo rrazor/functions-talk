@@ -74,10 +74,13 @@ body {
 .reveal h2 { font-size: 76px; text-transform: uppercase; }
 .reveal h3 { font-size: 56px;	}
 .reveal h4 { font-size: 36px; text-transform: uppercase; }
-.reveal h4 code { text-transform: none; }
 
+.reveal h1 code,
+.reveal h2 code,
+.reveal h3 code,
+.reveal h4 code,
 .reveal p code,
-.reveal li code { color: #e3c3ab; }
+.reveal li code { color: #e3c3ab; text-transform: none; }
 
 .reveal h1.inverted,
 .reveal h2.inverted,
