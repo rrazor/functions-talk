@@ -446,8 +446,7 @@ if ( condition ) {
 	var tmp  =  5;
 }
 
-// tmp doesn´t go out of scope outside the if block
-console.log( tmp ); // → 5
+console.log( tmp ); // → 5, tmp is still in scope
 						</code></pre>
 						<pre><code class="javascript">
 var i = 0;
@@ -635,6 +634,7 @@ function add_handlers ( result ) {
 
 		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
 		<script src="lib/js/head.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 		<script>
 			// Load the main reveal.js script
@@ -687,8 +687,12 @@ function add_handlers ( result ) {
 			head.js( 'lib/js/classList.js' );
 			head.js( 'lib/js/highlight.js', function() {
 				hljs.tabReplace  =  '    ';
-				// Fire off syntax highlighting for potential code samples in the slides
-				hljs.initHighlightingOnLoad();
+				$(document).ready(function() {
+					$('pre code').each(function(i, e) {
+						$( e ).html( $( e ).html( ).replace( /(^\n*|\n\s*$)/g, '' ) );
+						hljs.highlightBlock(e, '    ')
+					});
+				} );
 			} );
 
 			// If we're runnning the notes server we need to include some additional JS
