@@ -697,6 +697,76 @@ console.log( a );
 // → undefined, the argument a only exists in sum’s scope
 						</code></pre>
 					</section>
+
+					<section>
+					<h4><code>var</code> hoisting</h4>
+						<p>JavaScript will “hoist” any variable declarations with <code>var</code> to the top of a function:</p>
+						<pre><code class="javascript">
+var result  =  10;
+
+function log_result ( ) {
+	result  =  5;
+	console.log( result );
+	var result;
+}
+
+log_result( ); // →  5
+result;        // → 10 (because var was hoisted)
+						</code></pre>
+						<p>Hoisting rearranges the function to look like:</p>
+						<pre><code class="javascript">
+function log_result ( ) {
+	var result;
+	result  =  5;
+	console.log( result );
+}
+						</code></pre>
+					</section>
+					<section>
+						<h4>Assignment using <code>var</code> is <em>not</em> hoisted</h4>
+						<pre><code class="javascript">
+var result  =  10;
+
+function log_result ( ) {
+	console.log( result );
+	var result = 5;
+}
+
+log_result( ); // → undefined! "var result" hoists,  not result = 5
+result;        // → 10
+						</code></pre>
+						<p>This is how the function looks after <code>var</code> hoisting:</p>
+						<pre><code class="javascript">
+function log_result ( ) {
+	var result;
+	console.log( result );
+	result = 5;
+}
+						</code></pre>
+						<p>Now it should be clear why <code>log_result( )</code> returns <code>undefined</code>.</p>
+					</section>
+					<section>
+						<h4>Don’t rely on <code>var</code> hoisting</h4>
+						<p>Instead, <em>always</em> declare local variables at the top of a scope (<em>i.e.</em> at the beginning of the function’s body).</p>
+						<pre><code class="javascript">
+function sum_array ( input ) {
+	var i, len, output = 0;
+
+	len  =  input.length;
+
+	for ( i = 0; i &lt; len; ++i ) {
+		output  +=  input[i];
+	}
+
+	return output;
+}
+						</code></pre>
+						<p><a href="http://www.jslint.com/">JSLint</a> can help you catch lots of these problems, although it is <em>picky</em>. Try it with these options:</p>
+						<pre><code class="javascript">
+/*jslint plusplus: true, sloppy: true, white: true, browser: true,
+         devel: true */
+						</code></pre>
+					</section>
 				</section>
 
 				<section>
