@@ -810,12 +810,13 @@ add_4( 2 ); // → 6
 						<p>The scope-capturing behavior of closures can lead to unpleasant surprises.</p>
 						<pre><code class="javascript">
 function add_handlers ( result ) {
-	var i, len = result.size( );
-	for ( i = 0; i &lt; len; ++i ) {
-		$( result[i] ).on( 'click', function ( ) {
-			console.log( 'I am element number: ' + i );
-		} );
-	}
+    var i, len = result.size( );
+    for ( i = 0; i &lt; len; ++i ) {
+        $( result[i] ).on( 'click', function ( ) {
+            alert( 'I am element number: ' + i + 
+                ' and my HTML is: ' + $( this ).html( ) );
+        } );
+    }
 }
 						</code></pre>
 						<p>Looks legit, right?</p>
