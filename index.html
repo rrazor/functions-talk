@@ -853,7 +853,7 @@ function add_handlers ( result ) {
 						<h2>Recursion</h2>
 						<p>Fibonacci sequence</p>
 						<pre><code class="javascript">
-var solver  =  function fib( n ) {
+var solver  =  function fib ( n ) {
 
 	if ( n === 1 ) {
 		return [ 1 ];
@@ -862,6 +862,8 @@ var solver  =  function fib( n ) {
 		return [ 1, 1 ];
 	}
 
+	// we use fib, not solver to refer to the function itself
+	// arguments.callee could work here, too
 	var seq  =  fib( n - 1 );
 	seq.push( seq[n - 1 - 1] + seq[ n - 1 - 2] );
 
